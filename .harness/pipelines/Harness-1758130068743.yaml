@@ -21,10 +21,14 @@ pipeline:
                     command: |
                       echo "Building Maven Project..."
                       mvn clean install -Dmaven.test.failure.ignore=false
-                      ls -lh target/ 
+                      ls -lh target/
           runtime:
             type: Docker
-            spec: {}
+            spec:
+              connectorRef: <+input>
+              image: maven:3.9.4-eclipse-temurin-17
+              entrypoint:
+                - ""
   properties:
     ci:
       codebase:
