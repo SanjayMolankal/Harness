@@ -3,6 +3,12 @@ pipeline:
   identifier: Build_SanjayMolankal_Harness_1758130074817
   projectIdentifier: Maven2
   orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1758111779450
+        repoName: SanjayMolankal/Harness
+        build: <+input>
   stages:
     - stage:
         name: Build
@@ -10,28 +16,22 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec:
+              image: maven:3.9.4-eclipse-temurin-17
           execution:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  name: Build with Maven
+                  identifier: Build_Maven
                   spec:
                     shell: Sh
                     command: |
                       echo "Building Maven Project..."
                       mvn clean install -Dmaven.test.failure.ignore=false
                       ls -lh target/
-          runtime:
-            type: Docker
-            spec:
-              connectorRef: <+input>
-              image: maven:3.9.4-eclipse-temurin-17
-              entrypoint:
-                - ""
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.Github_OAuth_1758111779450
-        repoName: SanjayMolankal/Harness
-        build: <+input>
