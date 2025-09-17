@@ -22,9 +22,6 @@ pipeline:
                       echo "Building Maven Project..."
                       mvn clean install -Dmaven.test.failure.ignore=false
                       ls -lh target/ 
-          platform:
-            os: Linux
-            arch: Amd64
           runtime:
             type: Docker
             spec: {}
