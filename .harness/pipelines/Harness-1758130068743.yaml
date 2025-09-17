@@ -18,7 +18,10 @@ pipeline:
                   identifier: Echo_Welcome_Message
                   spec:
                     shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    command: |
+                      echo "Building Maven Project..."
+                      mvn clean install -Dmaven.test.failure.ignore=false
+                      ls -lh target/ 
           platform:
             os: Linux
             arch: Amd64
