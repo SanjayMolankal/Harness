@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_SanjayMolankal_Harness_1758130074817-push-trigger-input-set
+  identifier: Build_SanjayMolankal_Harness_1758130074817pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Maven2
+  pipeline:
+    identifier: Build_SanjayMolankal_Harness_1758130074817
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
