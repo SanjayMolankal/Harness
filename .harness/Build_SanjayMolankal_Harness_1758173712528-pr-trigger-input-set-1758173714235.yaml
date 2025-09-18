@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_SanjayMolankal_Harness_1758173712528-pr-trigger-input-set
+  identifier: Build_SanjayMolankal_Harness_1758173712528prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Maven3
+  pipeline:
+    identifier: Build_SanjayMolankal_Harness_1758173712528
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
